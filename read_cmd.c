@@ -7,7 +7,7 @@ char *read_cmd(void)
 	char *ptr2 = NULL;
 	char ptrlen = 0;
 
-	while(fgets(buf, 1024, stdin))
+	while(getline(buf, 1024, stdin))
 	{
 		int buflen = _strlen(buf);
 

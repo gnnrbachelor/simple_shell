@@ -66,3 +66,48 @@ int _strlen(char *s)
 	}
 	return (counter);
 }
+
+/**
+ * _strcat - function to concatenate 2 strings
+ * @dest: destination string
+ * @src: source string
+ * Return: dest
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int i, j;
+
+	for (i = 0; dest[i] != '\0' ; i++)
+	{
+	}
+	for (j = 0; src[j] != '\0' ; j++)
+	{
+		dest[i + j] = src[j];
+	}
+	return (dest);
+}
+
+/**
+ * _realloc - function reallocates a memory
+ * @ptr: a pointer to the memory previously allocated
+ * @new_size: new size in bytes of the allocated space for ptr
+ * Return: pointer or null
+ */
+void *_realloc(void *ptr, unsigned int new_size)
+{
+	void *newsp;
+
+	if (new_size == 0 && ptr != NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	newsp = malloc(new_size);
+	if (newsp == NULL)
+	{
+		return (NULL);
+	}
+	free(ptr);
+	return (newsp);
+}
