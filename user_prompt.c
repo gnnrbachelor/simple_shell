@@ -2,5 +2,5 @@
 
 void user_prompt(void)
 {
-	fprintf(stderr, "$ ");
+	write(1, "$ ", 2);
 }
