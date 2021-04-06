@@ -2,12 +2,16 @@
 
 char *read_cmd(void)
 {
-	char buf[1024];
-	char *ptr = NULL;
-	char *ptr2 = NULL;
-	char ptrlen = 0;
+	size_t bufsize = 0;
+	char *buf = NULL, *ptr = NULL, *ptr2 = NULL, ptrlen = 0;
 
-	while(getline(buf, 1024, stdin))
+	/* buf = malloc(sizeof(char) * 1024);
+	if (buf == NULL)
+	{
+		free(buf);
+		return (NULL);
+		} */
+	while(getline(&buf, &bufsize, stdin) != 1024)
 	{
 		int buflen = _strlen(buf);
 
@@ -15,7 +19,7 @@ char *read_cmd(void)
 			ptr = malloc(buflen + 1);
 		else
 		{
-			ptr2 = realloc(ptr, ptrlen + buflen + 1);
+			ptr2 = _realloc(ptr, ptrlen + buflen + 1);
 			if (ptr2)
 				ptr = ptr2;
 			else
@@ -24,14 +28,11 @@ char *read_cmd(void)
 				ptr = NULL;
 			}
 		}
-
 		if (!ptr)
-		{
-			fprintf(stderr, "Error %s\n", strerror(errno));
+		{_puts(_strcat("Error ", strerror(errno)));
 			return (NULL);
 		}
 		_strcpy(ptr + ptrlen, buf);
-
 		if (buf[buflen - 1] == '\n')
 		{
 			if (buflen == 1 || buf[buflen - 2] != '\\')
@@ -40,9 +41,7 @@ char *read_cmd(void)
 			buflen -= 2;
 			user_prompt();
 		}
-
 		ptrlen += buflen;
 	}
-
 	return (ptr);
 }

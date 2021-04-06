@@ -2,5 +2,5 @@
 
 void user_prompt(void)
 {
-	write(1, "$ ", 2);
+	write(STDERR_FILENO, "$ ", 2);
 }
