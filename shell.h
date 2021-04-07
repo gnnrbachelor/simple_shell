@@ -10,6 +10,7 @@
 
 
 char **tokenize(char *str);
+char **tokenize1(char *buffer);
 void user_prompt(void);
 char *read_cmd(void);
 int _strcmp(char *s1, char *s2);

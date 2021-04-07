@@ -4,44 +4,28 @@ int command_count(char *str)
 {
 	int count = 0;
 	int i = 0;
-	int incommand = 0;
-
-	printf("test\n");
+	int boool = 0;
 
 	while (str[i])
 	{
-		if (str[i] != ' ')
-			incommand = 1;
-		if ((incommand && str[i + 1] == ' ') || (incommand && str[i + 1] == '\0'))
+		if (str[i] == ' ')
+			boool = 0;
+		else if (boool == 0)
 		{
 			count++;
-			incommand = 0;
+			boool = 1;
 		}
 		i++;
 	}
 	return (count);
 }
 
-char **token_test(char *str)
-{
-	char **p;
-	char *array[] = { "The quick",
-                  "brown fox",
-                  "jumps over",
-                  "the lazy dog." };
-	p = array;
-
-	(void)str;
-	printf("token\n");
-	return (p);
-}
-
 
 char **tokenize(char *str)
 {
-	char *token;
-	char **token_array;
-	unsigned int length = 0;
+	char *token = NULL;
+	char **token_col = NULL;
+	int length = 0;
 	int i = 0;
 
 	str[strlen(str) - 1] = '\0';
@@ -49,20 +33,21 @@ char **tokenize(char *str)
 	if (length == 0)
 		return (NULL);
 
-	token_array = malloc((sizeof(char *)) * (length + 1));
-	if (token_array == NULL)
+	token_col = malloc((sizeof(char *)) * (length + 1));
+	if (!token_col)
 		return (NULL);
 
 	token = strtok(str, " ");
-	while (token != NULL)
+	while (token)
 	{
-		token_array[i] = malloc(strlen(token) + 1);
-		if (token_array[i] == NULL)
+		token_col[i] = malloc(strlen(token) + 1);
+		if (token_col[i] == NULL)
 			return (NULL);
-		strncpy(token_array[i], token, strlen(token) + 1);
+		strncpy(token_col[i], token, strlen(token) + 1);
 		token = strtok(NULL, " ");
 		i++;
 	}
-	token_array[i] = NULL;
-	return (token_array);
+	token_col[i] = NULL;
+	return (token_col);
 }
+

@@ -1,29 +1,32 @@
 #include "shell.h"
 
-int main(int argc __attribute__((unused)), char **argv __attribute__((unused)), char **env __attribute__((unused)))
+int main(int argc, char **argv, char **env)
 {
 	char *buffer;
 	char **command_array;
 	size_t size;
 	ssize_t line_size;
+	pid_t pid;
+	(void)argv;
+	(void)argc;
+	(void)env;
 
-	while (1)
+	buffer = NULL;
+
+	write(STDOUT_FILENO, "$ ", 2);
+	while ((line_size = getline(&buffer, &size, stdin)))
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		command_array = tokenize(buffer);
+		printf("%s\n", *command_array);
 
-		line_size = getline(&buffer, &size, stdin);
-		if (line_size == -1)
-			return (-1);
-
-		command_array = token_test(buffer);
-		if (command_array == NULL)
-			return (-1);
-		else
-			execute(command_array);
-
-		line_size = 0;
-		buffer = NULL;
-
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("Error");
+	}
+	if (pid == 0)
+	{
+	}
 	}
 
 	exit(0);
