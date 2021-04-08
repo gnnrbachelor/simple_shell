@@ -6,7 +6,6 @@
  * @env: environmental variable
  * Return: 0
  */
-
 int main(int argc, char **argv, char **env)
 {
 	char *buffer;
@@ -19,13 +18,19 @@ int main(int argc, char **argv, char **env)
 
 	buffer = NULL;
 
+<<<<<<< HEAD
 	if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 
 	while ((line_size = getline(&buffer, &size, stdin)))
+=======
+	write(STDOUT_FILENO, "$ ", 2);
+	while ((line_size = getline(&buffer, &size, stdin)) < 1024)
+>>>>>>> main
 	{
 
 		command_array = tokenize(buffer);
+<<<<<<< HEAD
 		execute(command_array, buffer);
 
 		size = 0;
@@ -33,6 +38,25 @@ int main(int argc, char **argv, char **env)
 
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
+=======
+		pid = fork();
+		if (pid == -1)
+			perror("Error\n");
+
+		if (pid == 0)
+		{
+			if (stat(command_array[0], &fstat) == 0)
+			{
+				execve(command_array[0], command_array, NULL);
+/* need to find the way to add "$ " behind stat */
+			}
+			else
+			{
+				perror("Problem\n");
+				write(STDOUT_FILENO, "$ ", 2);
+			}
+		}
+>>>>>>> main
 	}
 	free_token(command_array);
         exit(0);

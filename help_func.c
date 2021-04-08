@@ -2,14 +2,11 @@
 
 /**
  * _strncpy - Concatenates src to dest
- *
  * @dest: String
  * @src: String
  * @n: Number of characters to concat
- *
  * Return: dest
  */
-
 char *_strncpy(char *dest, char *src, int n)
 {
 	int i = 0;
@@ -29,13 +26,10 @@ char *_strncpy(char *dest, char *src, int n)
 
 /**
  * _strcmp - Compares two strings.
- *
  * @s1: String one
  * @s2: String two
- *
  * Return: Difference
  */
-
 int _strcmp(char *s1, char *s2)
 {
 	while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
@@ -52,13 +46,10 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * _strcpy - copies string
- *
  * @dest: copy
  * @src: original
- *
  * Return: *dest
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
@@ -81,7 +72,6 @@ char *_strcpy(char *dest, char *src)
  *
  * Return: void
  */
-
 int _strlen(char *s)
 {
 	int counter = 0;
@@ -100,7 +90,6 @@ int _strlen(char *s)
  * @src: source string
  * Return: dest
  */
-
 char *_strcat(char *dest, char *src)
 {
 	int i, j;
@@ -113,28 +102,4 @@ char *_strcat(char *dest, char *src)
 		dest[i + j] = src[j];
 	}
 	return (dest);
-}
-
-/**
- * _realloc - function reallocates a memory
- * @ptr: a pointer to the memory previously allocated
- * @new_size: new size in bytes of the allocated space for ptr
- * Return: pointer or null
- */
-void *_realloc(void *ptr, unsigned int new_size)
-{
-	void *newsp;
-
-	if (new_size == 0 && ptr != NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
-	newsp = malloc(new_size);
-	if (newsp == NULL)
-	{
-		return (NULL);
-	}
-	free(ptr);
-	return (newsp);
 }

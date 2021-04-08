@@ -1,9 +1,6 @@
 #include "shell.h"
 
-/**
- * execute - function to execute input command
- * @cmd: input command
- */
+<<<<<<< HEAD
 
 void execute(char **command_array, char *buffer)
 {
@@ -35,4 +32,14 @@ void execute(char **command_array, char *buffer)
 		exit(EXIT_SUCCESS);
 	}
 
+=======
+/**
+ * execute - function to execute input command
+ * @cmd: input command
+ */
+void execute(char **cmd)
+{
+	(void)cmd;
+	_puts("Execution\n");
+>>>>>>> main
 }

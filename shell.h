@@ -15,6 +15,7 @@
 int _putchar(char c);
 void _puts(char *str);
 char **tokenize(char *str);
+void free_token(char **tokcmd);
 char *read_cmd(void);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);

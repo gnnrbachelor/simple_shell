@@ -1,11 +1,14 @@
 #include "shell.h"
 
+<<<<<<< HEAD
+
+=======
 /**
  * command_count - function to count commands
  * @str: input commands
  * Return: count of commands
  */
-
+>>>>>>> main
 int command_count(char *str)
 {
 	int count = 0;
