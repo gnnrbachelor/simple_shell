@@ -12,6 +12,8 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 int _putchar(char c);
 void _puts(char *str);
 char **tokenize(char *str);
