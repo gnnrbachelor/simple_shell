@@ -4,7 +4,7 @@
  * @argc: argument count
  * @argv: argument array
  * @env: environmental variable
- * Exit: 0
+ * Return: 0
  */
 int main(int argc, char **argv, char **env)
 {

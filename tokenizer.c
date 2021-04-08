@@ -54,7 +54,7 @@ char **tokenize(char *str)
 		token_col[i] = malloc(strlen(token) + 1);
 		if (token_col[i] == NULL)
 		{
-			for (i--; i >=0; i--)
+			for (i--; i >= 0; i--)
 				free(token_col[i]);
 
 			free(token_col);
