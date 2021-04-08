@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 int command_count(char *str)
 {
 	int count = 0;

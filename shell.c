@@ -8,15 +8,19 @@ int main(int argc, char **argv, char **env)
 	ssize_t line_size;
 	pid_t pid;
 	struct stat fstat;
+	int status;
 	(void)argv;
 	(void)argc;
 	(void)env;
 
 	buffer = NULL;
 
-	write(STDOUT_FILENO, "$ ", 2);
+	if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
+
 	while ((line_size = getline(&buffer, &size, stdin)))
 	{
+
 		command_array = tokenize(buffer);
 
 		pid = fork();
@@ -31,6 +35,19 @@ int main(int argc, char **argv, char **env)
 			else
 				perror("Problem\n");
 		}
+		else
+		{
+			wait(&status);
+			free(buffer);
+			exit(EXIT_SUCCESS);
+		}
+
+		size = 0;
+		buffer = NULL;
+
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
+
 	}
 
 	exit(0);
