@@ -1,8 +1,29 @@
 #include "shell.h"
 
 
-void execute(char **cmd)
+void execute(char **command_array, char *buffer)
 {
-	(void)cmd;
-	printf("Execution\n");
+	pid_t pid;
+	struct stat fstat;
+	int status;
+
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("Error\n");
+	}
+	if (pid == 0)
+	{
+		if (stat(command_array[0], &fstat) == 0)
+			execve(command_array[0], command_array, NULL);
+		else
+			perror("Problem\n");
+	}
+	else
+	{
+		wait(&status);
+		free(buffer);
+		exit(EXIT_SUCCESS);
+	}
+
 }
