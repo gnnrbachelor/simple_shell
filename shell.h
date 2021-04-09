@@ -31,5 +31,6 @@ char * _getenv(const char *name);
 int dir_num(char * env_path);
 char **dir_tokenize(char *paths);
 char *cmd_to_path(char *path, char *command);
+char *check_dir(char **command_array);
 
 #endif
