@@ -17,7 +17,7 @@ char * _getenv(const char *name)
 				j++;
 			j++;
 
-			while (env_var[k])
+			while (env_var[j])
 			{
 				value[k] = env_var[j];
 				j++;
