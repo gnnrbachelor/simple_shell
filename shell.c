@@ -20,11 +20,10 @@ int main(int argc, char **argv, char **env)
 	buffer = NULL;
 
 	if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "$ ", 2);
+		write(STDOUT_FILENO, "$ ", 2);
 
-	while ((line_size = getline(&buffer, &size, stdin)))
+	while ((line_size = getline(&buffer, &size, stdin)) < 1024)
 	{
-
 		command_array = tokenize(buffer);
 		execute(command_array, buffer);
 
@@ -35,5 +34,5 @@ int main(int argc, char **argv, char **env)
 			write(STDOUT_FILENO, "$ ", 2);
 	}
 	free_token(command_array);
-        exit(0);
+	exit(0);
 }

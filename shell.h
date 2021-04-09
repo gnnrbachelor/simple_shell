@@ -24,6 +24,7 @@ char *_strcat(char *dest, char *src);
 void *_realloc(void *ptr, unsigned int new_size);
 char *_strncpy(char *dest, char *src, int n);
 void execute(char **command_array, char *buffer);
+void built_in_cmd(char **command_array, char *buffer);
 int command_count(char *str);
 int count_by_del(char *str, char *del);
 
