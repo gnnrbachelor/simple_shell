@@ -27,6 +27,8 @@ void *_realloc(void *ptr, unsigned int new_size);
 char *_strncpy(char *dest, char *src, int n);
 void execute(char **command_array, char *buffer);
 int command_count(char *str);
-int count_by_del(char *str, char *del);
+char * _getenv(const char *name);
+int dir_num(char * env_path);
+char **dir_tokenize(char *paths);
 
 #endif
