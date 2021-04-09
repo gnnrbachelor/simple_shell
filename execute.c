@@ -35,7 +35,6 @@ void execute(char **command_array, char *buffer)
 	{
 		wait(&status);
 		free(buffer);
-		exit(EXIT_SUCCESS);
 	}
 
 }
