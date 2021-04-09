@@ -76,3 +76,20 @@ char **dir_tokenize(char *paths)
 	return (dir_tokens);
 }
 
+char *cmd_to_path(char *path, char *command)
+{
+	int path_len = 0;
+	int command_len = 0;
+	char *new_path;
+
+	path_len = strlen(path);
+	command_len = strlen(command);
+	new_path = malloc(sizeof(char) * (path_len + command_len + 2));
+	if (!new_path)
+		return (NULL);
+	_strcpy(new_path, path);
+	_strcat(new_path, "/");
+	_strcat(new_path, command);
+	return (new_path);
+
+}
