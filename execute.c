@@ -9,6 +9,7 @@
 void execute(char **command_array, char *buffer)
 {
 	pid_t pid;
+	char *path_command;
 	struct stat fstat;
 	int status;
 
@@ -22,7 +23,6 @@ void execute(char **command_array, char *buffer)
 		if (!command_array)
 		{
 			free(buffer);
-			exit(EXIT_SUCCESS);
 		}
 		if (stat(command_array[0], &fstat) == 0)
 		{
@@ -35,7 +35,10 @@ void execute(char **command_array, char *buffer)
 			exit(EXIT_SUCCESS);
 		}
 		else
-			perror("Problem\n");
+		{
+			path_command = check_dir(command_array);
+			execve(path_command, command_array, NULL);
+		}
 	}
 	else
 	{

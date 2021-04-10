@@ -50,7 +50,7 @@ int _strcmp(char *s1, char *s2)
  * @src: original
  * Return: *dest
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	int i = 0;
 	int j;
@@ -72,7 +72,7 @@ char *_strcpy(char *dest, char *src)
  *
  * Return: void
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int counter = 0;
 
