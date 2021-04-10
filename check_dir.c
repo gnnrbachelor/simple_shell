@@ -21,7 +21,7 @@ char *check_dir(char **command_array)
 
 		if (stat(dir_tokens[i], &check) == 0)
 		{
-			matched = strdup(dir_tokens[i]);
+			matched = _strdup(dir_tokens[i]);
 			return (matched);
 		}
 		i++;

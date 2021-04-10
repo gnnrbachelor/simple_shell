@@ -30,7 +30,7 @@ char *_strncpy(char *dest, char *src, int n);
 /* helper function set 2 */
 void *_realloc(void *ptr, unsigned int new_size);
 int _strncmp(const char *s1, const char *s2, int len);
-char *_strdup (const char *str);
+char *_strdup(const char *str);
 /* execute function */
 void execute(char **command_array, char *buffer);
 void built_in_cmd(char **command_array, char *buffer);

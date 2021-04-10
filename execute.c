@@ -30,9 +30,8 @@ void execute(char **command_array, char *buffer)
 		}
 		else if (_strcmp(command_array[0], "exit") == 0)
 		{
-			wait(&status);
 			free(buffer);
-			exit(EXIT_SUCCESS);
+			kill(pid, SIGKILL);
 		}
 		else
 		{

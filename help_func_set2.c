@@ -36,6 +36,16 @@ int _strncmp(const char *s1, const char *s2, int len)
 	int i;
 	char *sa, *sb;
 
+	sa = malloc(sizeof(char) * (len + 1));
+	if (sa == NULL)
+	{
+		free(sa);
+	}
+	sb = malloc(sizeof(char) * (len + 1));
+	if (sb == NULL)
+	{
+		free(sb);
+	}
 	for (i = 0; s1[i] != '\0' && s2[i] != '\0' && i < len; i++)
 	{
 		sa[i] = s1[i];
@@ -57,13 +67,13 @@ int _strncmp(const char *s1, const char *s2, int len)
  * @str: input string
  * Return: pointer to the string
  */
-char *_strdup (const char *str)
+char *_strdup(const char *str)
 {
 	int len = _strlen(str) + 1;
 	char *new = malloc(sizeof(char) * len);
 
 	if (new == NULL)
-		return NULL;
+		return (NULL);
 
 	return (_strcpy(new, str));
 }
