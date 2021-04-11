@@ -42,6 +42,8 @@ void execute(char **command_array, char *buffer)
 	else
 	{
 		wait(&status);
+		/* waitpid(0, &status, WEXITSTATUS(status)); */
 		free(buffer);
+		/* if (WIFEXITED(1)){exit(EXIT_SUCCESS);} */
 	}
 }

@@ -5,7 +5,7 @@
  * @env_path: given directory path
  * Return: the count
  */
-int dir_num(char * env_path)
+int dir_num(char *env_path)
 {
 	int i = 0;
 	int count = 0;
@@ -26,14 +26,10 @@ int dir_num(char * env_path)
  * @name: input string
  * Return: NULL
  */
-char * _getenv(const char *name)
+char *_getenv(const char *name)
 {
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int size = 0;
-	char *env_var = NULL;
-	char *value = NULL;
+	int i = 0, j = 0, k = 0, size = 0;
+	char *env_var = NULL, *value = NULL;
 
 	while (environ[i])
 	{

@@ -35,8 +35,8 @@ char *_strdup(const char *str);
 void execute(char **command_array, char *buffer);
 void built_in_cmd(char **command_array, char *buffer);
 /* environmental varriable */
-char * _getenv(const char *name);
-int dir_num(char * env_path);
+char *_getenv(const char *name);
+int dir_num(char *env_path);
 char **dir_tokenize(char *paths);
 char *cmd_to_path(char *path, char *command);
 /* directory path checker */
