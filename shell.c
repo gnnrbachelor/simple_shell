@@ -24,6 +24,13 @@ int main(int argc, char **argv, char **env)
 
 	while ((line_size = getline(&buffer, &size, stdin)))
 	{
+		if (line_size == EOF)
+		{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			free(buffer);
+			exit(EXIT_SUCCESS);
+		}
 
 		command_array = tokenize(buffer);
 		execute(command_array, buffer);
