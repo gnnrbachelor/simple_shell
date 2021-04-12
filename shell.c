@@ -13,9 +13,10 @@ int main(int argc, char **argv, char **env)
 	char **command_array;
 	size_t size;
 	ssize_t line_size;
+	int i;
 	(void)argv;
 	(void)argc;
-	(void)env;
+	/*(void)env;*/
 
 	buffer = NULL;
 
@@ -26,7 +27,12 @@ int main(int argc, char **argv, char **env)
 	{
 		command_array = tokenize(buffer);
 		execute(command_array, buffer);
-
+		if (_strcmp(command_array[0], "env") == 0)
+			for (i = 0; env[i] != NULL; i++)
+			{
+				_puts(env[i]);
+				_putchar('\n');
+			}
 		size = 0;
 		buffer = NULL;
 

@@ -13,6 +13,7 @@ void execute(char **command_array, char *buffer)
 	struct stat fstat;
 	int status;
 
+	signal(SIGINT, SIG_IGN);
 	pid = fork();
 	if (pid == -1)
 	{
@@ -21,22 +22,24 @@ void execute(char **command_array, char *buffer)
 	if (pid == 0)
 	{
 		if (!command_array)
-		{
 			free(buffer);
-		}
+
 		if (stat(command_array[0], &fstat) == 0)
-		{
 			execve(command_array[0], command_array, NULL);
-		}
-		else if (_strcmp(command_array[0], "exit") == 0)
+
+		if (_strcmp(command_array[0], "exit") == 0)
 		{
 			free(buffer);
-			kill(pid, SIGKILL);
+			kill(pid, SIGTERM);
 		}
+		if (_strcmp(command_array[0], "cd") == 0)
+			chdir(command_array[1]);
+
 		else
 		{
 			path_command = check_dir(command_array);
 			execve(path_command, command_array, NULL);
+		/*if(execve(path_command,command_array,NULL) == -1){exit(1);}*/
 		}
 	}
 	else
