@@ -41,5 +41,6 @@ char **dir_tokenize(char *paths);
 char *cmd_to_path(char *path, char *command);
 /* directory path checker */
 char *check_dir(char **command_array);
+void no_file(char *cmd);
 
 #endif

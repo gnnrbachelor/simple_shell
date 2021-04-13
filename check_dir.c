@@ -15,7 +15,8 @@ char *check_dir(char **command_array)
 
 	env_path = _getenv("PATH");
 	dir_tokens = dir_tokenize(env_path);
-	while (dir_tokens[i] != NULL)
+
+	while (dir_tokens[i])
 	{
 		dir_tokens[i] = cmd_to_path(dir_tokens[i], command_array[0]);
 
@@ -26,6 +27,8 @@ char *check_dir(char **command_array)
 		}
 		i++;
 	}
-	return (NULL);
 
+	no_file(command_array[0]);
+
+	return (NULL);
 }
