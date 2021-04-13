@@ -8,7 +8,7 @@
 void execute(char **command_array, char *buffer)
 {
 	pid_t pid;
-	char *path_command;
+	char *path_command = NULL;
 	struct stat fstat;
 	int status;
 
@@ -20,17 +20,13 @@ void execute(char **command_array, char *buffer)
 	if (pid == 0)
 	{
 		if (!command_array)
-		{
 			free(buffer);
-		}
-		if (stat(command_array[0], &fstat) == 0)
+		else if (stat(command_array[0], &fstat) == 0)
 			execve(command_array[0], command_array, NULL);
-		else if ((path_command = check_dir(command_array)) != NULL)
-			execve(path_command, command_array, NULL);
 		else
 		{
-			printf("nofile\n");
-			no_file(command_array[0]);
+			path_command = check_dir(command_array);
+			execve(path_command, command_array, NULL);
 		}
 	}
 	else

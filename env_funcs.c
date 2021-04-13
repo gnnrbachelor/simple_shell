@@ -72,7 +72,7 @@ char **dir_tokenize(char *paths)
 		dir = strtok(NULL, ":");
 		i++;
 	}
-	dir_tokens[i] = "NULL";
+	dir_tokens[i] = NULL;
 	return (dir_tokens);
 }
 

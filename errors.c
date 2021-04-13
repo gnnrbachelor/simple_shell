@@ -28,6 +28,4 @@ void no_file(char *cmd)
 	}
 	write(STDOUT_FILENO, buffer, bufsize);
 	free(buffer);
-
-
 }
