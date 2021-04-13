@@ -13,12 +13,10 @@ void execute(char **command_array, char *buffer)
 	struct stat fstat;
 	int status;
 
-	signal(SIGINT, SIG_IGN);
 	pid = fork();
 	if (pid == -1)
-	{
 		perror("Error\n");
-	}
+
 	if (pid == 0)
 	{
 		if (!command_array)
@@ -39,14 +37,11 @@ void execute(char **command_array, char *buffer)
 		{
 			path_command = check_dir(command_array);
 			execve(path_command, command_array, NULL);
-		/*if(execve(path_command,command_array,NULL) == -1){exit(1);}*/
 		}
 	}
 	else
 	{
 		wait(&status);
-		/* waitpid(0, &status, WEXITSTATUS(status)); */
 		free(buffer);
-		/* if (WIFEXITED(1)){exit(EXIT_SUCCESS);} */
 	}
 }
