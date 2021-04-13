@@ -1,5 +1,9 @@
 #include "shell.h"
 
+/**
+ * no_file - fuction to write error message
+ * @cmd: input command that triggers error message
+ */
 void no_file(char *cmd)
 {
 	char *buffer = NULL;
