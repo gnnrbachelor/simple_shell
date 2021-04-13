@@ -4,7 +4,7 @@ char *check_dir(char **command_array)
 {
 	char **dir_tokens;
 	char *env_path;
-	char *matched;
+	char *matched = NULL;
 	struct stat check;
 	int i = 0;
 
@@ -22,5 +22,4 @@ char *check_dir(char **command_array)
 		i++;
 	}
 	return (NULL);
-
 }
