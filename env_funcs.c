@@ -1,6 +1,11 @@
 #include "shell.h"
 
-int dir_num(char * env_path)
+/**
+ * dir_num - function to count directories and subdir within the path
+ * @env_path: given directory path
+ * Return: the count
+ */
+int dir_num(char *env_path)
 {
 	int i = 0;
 	int count = 0;
@@ -16,30 +21,41 @@ int dir_num(char * env_path)
 	return (count);
 }
 
-char * _getenv(const char *name)
+/**
+ * _getenv - function to get environmental variable
+ * @name: input string
+ * Return: NULL
+ */
+char *_getenv(const char *name)
 {
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int size = 0;
-	char *env_var = NULL;
-	char *value = NULL;
+	int i = 0, j = 0, k = 0, size = 0;
+	char *env_var = NULL, *value = NULL;
 
 	while (environ[i])
 	{
-		if (strncmp(name, environ[i], strlen(name)) == 0)
+		if (_strncmp(name, environ[i], _strlen(name)) == 0)
 		{
-			env_var = strdup(environ[i]);
+			env_var = _strdup(environ[i]);
+			if (env_var == NULL)
+			{
+				free(env_var);
+			}
 			while (env_var[j] != '=')
+			{
 				j++;
+			}
 			j++;
 			size = j;
 			while (env_var[size])
+			{
 				size++;
+			}
 			value = malloc(sizeof(char) * size);
 			if (value == NULL)
+			{
+				free(value);
 				return (NULL);
-
+			}
 			while (env_var[j])
 			{
 				value[k] = env_var[j];
@@ -53,6 +69,11 @@ char * _getenv(const char *name)
 	return (NULL);
 }
 
+/**
+ * dir_tokenize - function to tokenize directories
+ * @paths: input paths
+ * Return: directory tokens
+ */
 char **dir_tokenize(char *paths)
 {
 	char **dir_tokens = NULL;
@@ -63,12 +84,14 @@ char **dir_tokenize(char *paths)
 	size = dir_num(paths);
 	dir_tokens = malloc(sizeof(char *) * (size + 1));
 	if (!dir_tokens)
+	{
+		free(dir_tokens);
 		return (NULL);
-
+	}
 	dir = strtok(paths, ":");
 	while (dir)
 	{
-		dir_tokens[i] = strdup(dir);
+		dir_tokens[i] = _strdup(dir);
 		dir = strtok(NULL, ":");
 		i++;
 	}
@@ -76,20 +99,28 @@ char **dir_tokenize(char *paths)
 	return (dir_tokens);
 }
 
+/**
+ * cmd_to_path - function to make new path for input command
+ * @path: old path
+ * @command: input command
+ * Return: new path
+ */
 char *cmd_to_path(char *path, char *command)
 {
 	int path_len = 0;
 	int command_len = 0;
 	char *new_path;
 
-	path_len = strlen(path);
-	command_len = strlen(command);
+	path_len = _strlen(path);
+	command_len = _strlen(command);
 	new_path = malloc(sizeof(char) * (path_len + command_len + 2));
 	if (!new_path)
+	{
+		free(new_path);
 		return (NULL);
+	}
 	_strcpy(new_path, path);
 	_strcat(new_path, "/");
 	_strcat(new_path, command);
 	return (new_path);
-
 }
