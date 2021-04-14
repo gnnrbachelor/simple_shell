@@ -3,6 +3,7 @@
 /**
  * no_file - fuction to write error message
  * @cmd: input command that triggers error message
+ * @argv: argument array
  */
 void no_file(char *cmd, char **argv)
 {

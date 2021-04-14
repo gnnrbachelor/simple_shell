@@ -2,6 +2,7 @@
 
 /**
  * check_dir - function to check directory path
+ * @argv: argument array
  * @command_array: input command
  * Return: NULL
  */
