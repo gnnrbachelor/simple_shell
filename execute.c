@@ -16,12 +16,18 @@ void execute(char **command_array, char *buffer, char **argv)
 
 	pid = fork();
 	if (pid == -1)
+	{
 		perror("Error\n");
+		exit(EXIT_FAILURE);
+	}
 
 	if (pid == 0)
 	{
 		if (!command_array)
+		{
 			free(buffer);
+			exit(EXIT_SUCCESS);
+		}
 		if (stat(command_array[0], &fstat) == 0)
 			execve(command_array[0], command_array, NULL);
 		_getoutof(command_array, buffer);
