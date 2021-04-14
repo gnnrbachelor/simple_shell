@@ -32,7 +32,7 @@ void execute(char **command_array, char *buffer, char **argv)
 	else
 	{
 		wait(&status);
-		if (strcmp(command_array[0], "exit") == 0)
+		if (_strcmp(command_array[0], "exit") == 0)
 			_getoutof(command_array, buffer);
 		free_token(command_array);
 		free(buffer);
