@@ -22,10 +22,8 @@ void execute(char **command_array, char *buffer)
 		if (!command_array)
 			free(buffer);
 		if (stat(command_array[0], &fstat) == 0)
-
 		if (stat(command_array[0], &fstat) == 0)
 			execve(command_array[0], command_array, NULL);
-
 		if (_strcmp(command_array[0], "exit") == 0)
 		{
 			free_token(command_array);

@@ -15,9 +15,7 @@ int main(void)
 	buffer = NULL;
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
-
 	signal(SIGINT, handle_ctrl_c);
-
 	while ((line_size = getline(&buffer, &size, stdin)) < 1024)
 	{
 		if (line_size == EOF)
@@ -37,7 +35,6 @@ int main(void)
 			}
 		size = 0;
 		buffer = NULL;
-
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 	}
