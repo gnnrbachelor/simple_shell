@@ -88,3 +88,18 @@ void exit_shell(char **command_array, char *buffer)
 	free_token(command_array);
 	free(buffer);
 }
+
+/**
+ * _getoutof - function to exit shell in both child and parent processes
+ * @command_array: command array
+ * @buffer: input buffer
+ */
+void _getoutof(char **command_array, char *buffer)
+{
+	if (_strcmp(command_array[0], "exit") == 0)
+	{
+		free_token(command_array);
+		free(buffer);
+		exit(EXIT_SUCCESS);
+	}
+}
