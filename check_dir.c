@@ -8,9 +8,9 @@
  */
 char *check_dir(char **command_array, char **argv)
 {
-	char **dir_tokens;
-	char *env_path;
-	char *matched;
+	char **dir_tokens = NULL;
+	char *env_path = NULL;
+	char *matched = NULL;
 	struct stat check;
 	int i = 0;
 
