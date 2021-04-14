@@ -34,6 +34,7 @@ char *_strdup(const char *str);
 void _getoutof(char **command_array, char *buffer);
 /* execute function */
 void execute(char **command_array, char *buffer, char **argv);
+void changedir(char **command_array, char *buffer);
 /* environmental varriable */
 char *_getenv(const char *name);
 int dir_num(char *env_path);

@@ -26,7 +26,7 @@ void execute(char **command_array, char *buffer, char **argv)
 			execve(command_array[0], command_array, NULL);
 		_getoutof(command_array, buffer);
 		if (_strcmp(command_array[0], "cd") == 0)
-			chdir(command_array[1]);
+			changedir(command_array, buffer);
 		else
 		{
 			path_command = check_dir(command_array, argv);
@@ -39,4 +39,25 @@ void execute(char **command_array, char *buffer, char **argv)
 		_getoutof(command_array, buffer);
 		free(buffer);
 	}
+}
+
+/**
+ * changedir - function to change directory and env variable
+ * @command_array: input command
+ * @buffer: buffer allocated for input command
+ */
+void changedir(char **command_array, char *buffer)
+{
+	if (!command_array[1])
+	{
+		chdir("HOME");
+		getcwd(buffer, _strlen(buffer));
+	}
+	else if (!command_array[2])
+	{
+		chdir(command_array[1]);
+		getcwd(buffer, _strlen(buffer));
+	}
+	else
+		perror("getcwd");
 }
