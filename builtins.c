@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * check_builtins - built-in functions for special commands
+ * @command_array: input command
+ * @buffer: buffer allocated for input command
+ * Return: 0
+ */
 int check_builtins(char **command_array, char *buffer)
 {
 	char *builtins[] = { "exit", "env", "cd", NULL };
@@ -13,25 +19,42 @@ int check_builtins(char **command_array, char *buffer)
 			{
 			case 0:
 				_getoutof(command_array, buffer);
+				break;
 			case 1:
-				if (_strcmp(command_array[0], "env") == 0)
-				{
-					for (i = 0; environ[i] != NULL; i++)
-					{
-						_puts(environ[i]);
-						_putchar('\n');
-					}/*_env_print(); */
-				}
+				print_the_env();
 				return (1);
 			case 2:
-				chdir(command_array[1]);
+				changedir(command_array, buffer);
 				return (1);
-			default:
-				break;
-
 			}
 		}
 		i++;
 	}
 	return (0);
+}
+
+/**
+ * print_the_env - function to print environmental variable
+ */
+void print_the_env(void)
+{
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		_puts(environ[i]);
+		_putchar('\n');
+	}
+}
+
+/**
+ * _getoutof - function to exit shell in both child and parent processes
+ * @command_array: command array
+ * @buffer: input buffer
+ */
+void _getoutof(char **command_array, char *buffer)
+{
+	free_token(command_array);
+	free(buffer);
+	exit(EXIT_SUCCESS);
 }

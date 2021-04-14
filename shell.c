@@ -12,7 +12,6 @@ int main(int argc __attribute__((unused)), char **argv)
 	char **command_array;
 	size_t size;
 	ssize_t line_size;
-	int i;
 
 	buffer = NULL;
 	if (isatty(STDIN_FILENO))
@@ -29,12 +28,6 @@ int main(int argc __attribute__((unused)), char **argv)
 		}
 		command_array = tokenize(buffer);
 		execute(command_array, buffer, argv);
-		if (_strcmp(command_array[0], "env") == 0)
-			for (i = 0; environ[i] != NULL; i++)
-			{
-				_puts(environ[i]);
-				_putchar('\n');
-			}
 		size = 0;
 		buffer = NULL;
 		if (isatty(STDIN_FILENO))

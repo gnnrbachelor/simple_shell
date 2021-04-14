@@ -48,5 +48,6 @@ void no_file_sh_v(char *cmd, char **argv);
 void handle_ctrl_c(int signal);
 /* builtins */
 int check_builtins(char **command_array, char *buffer);
+void print_the_env(void);
 
 #endif
