@@ -42,5 +42,7 @@ char *cmd_to_path(char *path, char *command);
 /* directory path checker */
 char *check_dir(char **command_array);
 void no_file(char *cmd);
+/* handle ctrl-c */
+void handle_ctrl_c(int signal);
 
 #endif

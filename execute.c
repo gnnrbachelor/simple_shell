@@ -28,8 +28,9 @@ void execute(char **command_array, char *buffer)
 
 		if (_strcmp(command_array[0], "exit") == 0)
 		{
+			free_token(command_array);
 			free(buffer);
-			kill(pid, SIGTERM);
+			exit(EXIT_SUCCESS);
 		}
 		if (_strcmp(command_array[0], "cd") == 0)
 			chdir(command_array[1]);
@@ -42,6 +43,12 @@ void execute(char **command_array, char *buffer)
 	else
 	{
 		wait(&status);
+		if (_strcmp(command_array[0], "exit") == 0)
+		{
+			free_token(command_array);
+			free(buffer);
+			exit(EXIT_SUCCESS);
+		}
 		free(buffer);
 	}
 }
