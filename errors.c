@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * no_file - fuction to write error message
- * @cmd: input command that triggers error message
- * @argv: argument array
- */
+ *  * no_file - fuction to write error message
+ *   * @cmd: input command that triggers error message
+ *    * @argv: argument array
+ *     */
 void no_file(char *cmd, char **argv)
 {
 	char *buffer = NULL;
@@ -38,10 +38,10 @@ void no_file(char *cmd, char **argv)
 }
 
 /**
- * no_file_sh_v - fuction to write error message
- * @cmd: input command that triggers error message
- * @argv: argument array
- */
+ *  * no_file_sh_v - fuction to write error message
+ *   * @cmd: input command that triggers error message
+ *    * @argv: argument array
+ *     */
 void no_file_sh_v(char *cmd, char **argv)
 {
 	char *buffer = NULL;

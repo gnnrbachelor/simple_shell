@@ -30,19 +30,15 @@ void execute(char **command_array, char *buffer, char **argv)
 		}
 		if (stat(command_array[0], &fstat) == 0)
 			execve(command_array[0], command_array, NULL);
-		_getoutof(command_array, buffer);
-		if (_strcmp(command_array[0], "cd") == 0)
-			changedir(command_array, buffer);
-		else
-		{
-			path_command = check_dir(command_array, argv);
+		check_builtins(command_array, buffer);
+		if ((path_command = check_dir(command_array, argv)) != NULL)
 			execve(path_command, command_array, NULL);
-		}
 	}
 	else
 	{
 		wait(&status);
-		_getoutof(command_array, buffer);
+		if (_strcmp(command_array[0], "exit") == 0)
+			_getoutof(command_array, buffer);
 		free(buffer);
 	}
 }
