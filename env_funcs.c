@@ -119,8 +119,8 @@ char *cmd_to_path(char *path, char *command)
 		free(new_path);
 		return (NULL);
 	}
-	_strcpy(new_path, path);
-	_strcat(new_path, "/");
-	_strcat(new_path, command);
+	strcpy(new_path, path);
+	strcat(new_path, "/");
+	strcat(new_path, command);
 	return (new_path);
 }

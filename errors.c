@@ -24,7 +24,10 @@ void no_file(char *cmd, char **argv)
 
 	buffer = malloc(sizeof(char) * bufsize);
 	if (!buffer)
+	{
+		free(buffer);
 		return;
+	}
 
 	for (i = 0; i < bufsize; i++)
 	{

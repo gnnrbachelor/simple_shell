@@ -23,22 +23,18 @@ void execute(char **command_array, char *buffer, char **argv)
 
 	if (pid == 0)
 	{
-		if (!command_array)
-		{
-			free(buffer);
-			exit(EXIT_SUCCESS);
-		}
+		check_builtins(command_array, buffer);
 		if (stat(command_array[0], &fstat) == 0)
 			execve(command_array[0], command_array, NULL);
-		check_builtins(command_array, buffer);
 		if ((path_command = check_dir(command_array, argv)) != NULL)
 			execve(path_command, command_array, NULL);
 	}
 	else
 	{
 		wait(&status);
-		if (_strcmp(command_array[0], "exit") == 0)
+		if (strcmp(command_array[0], "exit") == 0)
 			_getoutof(command_array, buffer);
+		free_token(command_array);
 		free(buffer);
 	}
 }
