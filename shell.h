@@ -45,5 +45,7 @@ char *check_dir(char **command_array, char **argv);
 void no_file(char *cmd, char **argv);
 /* handle ctrl-c */
 void handle_ctrl_c(int signal);
+/* builtins */
+int check_builtins(char **command_array, char *buffer);
 
 #endif
