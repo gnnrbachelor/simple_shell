@@ -4,7 +4,7 @@
  * Return: 0
  */
 
-int main(void)
+int main(int argc __attribute__((unused)), char **argv)
 {
 	char *buffer;
 	char **command_array;
@@ -26,7 +26,7 @@ int main(void)
 			exit(EXIT_SUCCESS);
 		}
 		command_array = tokenize(buffer);
-		execute(command_array, buffer);
+		execute(command_array, buffer, argv);
 		if (_strcmp(command_array[0], "env") == 0)
 			for (i = 0; environ[i] != NULL; i++)
 			{

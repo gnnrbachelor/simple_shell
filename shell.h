@@ -32,7 +32,7 @@ void *_realloc(void *ptr, unsigned int new_size);
 int _strncmp(const char *s1, const char *s2, int len);
 char *_strdup(const char *str);
 /* execute function */
-void execute(char **command_array, char *buffer);
+void execute(char **command_array, char *buffer, char **argv);
 void built_in_cmd(char **command_array, char *buffer);
 /* environmental varriable */
 char *_getenv(const char *name);
@@ -40,8 +40,8 @@ int dir_num(char *env_path);
 char **dir_tokenize(char *paths);
 char *cmd_to_path(char *path, char *command);
 /* directory path checker */
-char *check_dir(char **command_array);
-void no_file(char *cmd);
+char *check_dir(char **command_array, char **argv);
+void no_file(char *cmd, char **argv);
 /* handle ctrl-c */
 void handle_ctrl_c(int signal);
 

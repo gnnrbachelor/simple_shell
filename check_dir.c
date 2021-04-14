@@ -5,7 +5,7 @@
  * @command_array: input command
  * Return: NULL
  */
-char *check_dir(char **command_array)
+char *check_dir(char **command_array, char **argv)
 {
 	char **dir_tokens;
 	char *env_path;
@@ -28,7 +28,7 @@ char *check_dir(char **command_array)
 		i++;
 	}
 
-	no_file(command_array[0]);
+	no_file(command_array[0], argv);
 
 	return (NULL);
 }
