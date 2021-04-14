@@ -38,7 +38,7 @@ char **tokenize(char *str)
 	int size = 0;
 	int i = 0;
 
-	str[strlen(str) - 1] = '\0';
+	str[_strlen(str) - 1] = '\0';
 	size = command_count(str);
 	if (size == 0)
 		return (NULL);
@@ -52,7 +52,7 @@ char **tokenize(char *str)
 	token = strtok(str, " ");
 	while (token)
 	{
-		token_col[i] = malloc(strlen(token) + 1);
+		token_col[i] = malloc(_strlen(token) + 1);
 		if (token_col[i] == NULL)
 		{
 			for (i--; i >= 0; i--)
@@ -61,7 +61,7 @@ char **tokenize(char *str)
 			free(token_col);
 			return (NULL);
 		}
-		strncpy(token_col[i], token, strlen(token) + 1);
+		_strncpy(token_col[i], token, _strlen(token) + 1);
 		token = strtok(NULL, " ");
 		i++;
 	}
