@@ -4,6 +4,7 @@
  * execute - function to execute input command
  * @command_array: input command
  * @buffer: buffer allocated for input command
+ * @argv: argument array
  */
 
 void execute(char **command_array, char *buffer, char **argv)

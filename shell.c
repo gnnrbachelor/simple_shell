@@ -1,6 +1,8 @@
 #include "shell.h"
 /**
  * main - main function of shell program
+ * @argc: argument count
+ * @argv: argument array
  * Return: 0
  */
 
