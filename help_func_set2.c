@@ -77,3 +77,14 @@ char *_strdup(const char *str)
 
 	return (_strcpy(new, str));
 }
+
+/**
+ * exit_shell - function to exit shell in both child and parent processes
+ * @command_array: command array
+ * @buffer: input buffer
+ */
+void exit_shell(char **command_array, char *buffer)
+{
+	free_token(command_array);
+	free(buffer);
+}

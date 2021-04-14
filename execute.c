@@ -26,8 +26,7 @@ void execute(char **command_array, char *buffer)
 			execve(command_array[0], command_array, NULL);
 		if (_strcmp(command_array[0], "exit") == 0)
 		{
-			free_token(command_array);
-			free(buffer);
+			exit_shell(command_array, buffer);
 			exit(EXIT_SUCCESS);
 		}
 		if (_strcmp(command_array[0], "cd") == 0)
@@ -42,11 +41,10 @@ void execute(char **command_array, char *buffer)
 	{
 		wait(&status);
 		if (_strcmp(command_array[0], "exit") == 0)
-		{
-			free_token(command_array);
-			free(buffer);
-			exit(EXIT_SUCCESS);
-		}
+                {
+                        exit_shell(command_array, buffer);
+                        exit(EXIT_SUCCESS);
+                }
 		free(buffer);
 	}
 }
