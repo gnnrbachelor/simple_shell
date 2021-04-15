@@ -26,7 +26,9 @@ void execute(char **command_array, char *buffer, char **argv)
 		check_builtins(command_array, buffer);
 		if (stat(command_array[0], &fstat) == 0)
 			execve(command_array[0], command_array, NULL);
-		if ((path_command = check_dir(command_array, argv)) != NULL)
+
+		path_command = check_dir(command_array, argv);
+		if (path_command != NULL)
 			execve(path_command, command_array, NULL);
 	}
 	else
